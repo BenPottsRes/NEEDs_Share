@@ -378,7 +378,7 @@
 </a>
     <h2>NEEDs Study 1: Share Page</h2><br>
     <h1>Help us reach people across the UK</h1>
-    <p class="subtitle">The NEEDs Project is doctoral research based at CRRAG, City St George’s, University of London. It explores autistic, ADHD, and AuDHD (autistic and ADHD) adults’ experiences of UK emergency departments (A&E). The project intends to go beyond describing what it is like. The goal is to take action and result in more accessible, equitable, and inclusive emergency departments. Taking part in this first study of the project can be through either a short survey (around 15 minutes), or a choice of interview or creative media option. <br><br><strong>We can only have the impact we need if we reach a large number of responses from diverse groups of people. You can support us by sharing the study and helping us recruit. This page aims to make this process as easy as possible.</strong></p>
+    <p class="subtitle">The NEEDs Project is doctoral research based at CRRAG, City St George's, University of London. It explores autistic, ADHD, and AuDHD (autistic and ADHD) adults' experiences of UK emergency departments (A&E). The project intends to go beyond describing what it is like. The goal is to take action and result in more accessible, equitable, and inclusive emergency departments. Taking part in this first study of the project can be through either a short survey (around 15 minutes), or a choice of interview or creative media option. <br><br><strong>We can only have the impact we need if we reach a large number of responses from diverse groups of people. You can support us by sharing the study and helping us recruit. This page aims to make this process as easy as possible.</strong></p>
     <div class="survey-url-row">
       <span class="survey-url-label">Survey at</span>
       <a class="survey-url" href="https://EDSurvey.link" target="_blank" rel="noopener">EDSurvey.link</a>
@@ -402,7 +402,7 @@
 
       <hr class="divider">
 
-      <div class="section-label">Step 2 — download the poster and attach it to your post</div>
+      <div class="section-label" id="step-2">Step 2 — download the poster and attach it to your post</div>
       <div class="download-card">
         <div class="dl-info">
           <div class="dl-icon">
@@ -429,7 +429,7 @@
 
       <hr class="divider">
 
-      <div class="section-label">Step 3 — copy the caption for your platform</div>
+      <div class="section-label" id="step-3">Step 3 — copy the caption for your platform</div>
       <div class="caption-grid">
 
         <div class="caption-card">
@@ -480,7 +480,7 @@
 
       <hr class="divider">
 
-      <div class="section-label">Step 4 — open your platform and paste</div>
+      <div class="section-label" id="step-4">Step 4 — open your platform and paste</div>
       <div class="share-grid-full">
         <a class="share-btn-full" href="#" onclick="openShare('twitter'); return false;" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.26 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -529,7 +529,7 @@
       var d = data[current];
       var btn = document.getElementById("dl-btn");
       var label = document.getElementById("dl-btn-label");
-      label.textContent = "Downloading\u2026";
+      label.textContent = "Downloading…";
       btn.disabled = true;
       fetch(d.poster)
         .then(function(res) { return res.blob(); })
@@ -543,6 +543,7 @@
           document.body.removeChild(a);
           URL.revokeObjectURL(url);
           label.textContent = "Downloaded!";
+          document.getElementById("step-3").scrollIntoView({ behavior: "smooth", block: "start" });
           setTimeout(function() {
             label.textContent = "Download";
             btn.disabled = false;
@@ -577,6 +578,9 @@
       });
 
       document.getElementById("steps").classList.add("visible");
+      setTimeout(function() {
+        document.getElementById("step-2").scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
     }
 
     function copyCaption(which) {
@@ -586,6 +590,7 @@
         var btn = document.getElementById("copy-" + which);
         btn.classList.add("copied");
         btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+        document.getElementById("step-4").scrollIntoView({ behavior: "smooth", block: "start" });
         setTimeout(function() {
           btn.classList.remove("copied");
           btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy';
